@@ -17,7 +17,7 @@ class HTMLRenderer extends React.Component {
     }
   }
   render() {
-    return React.createElement('div', null, renderHTML(this.state.html));
+    return <div>{renderHTML(this.state.html)}</div>;
   }
 }
 

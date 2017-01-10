@@ -7,6 +7,6 @@ import ReactDOM from 'react-dom';
 import HTMLRenderer from './html-renderer';
 
 ReactDOM.render(
-  React.createElement(HTMLRenderer, { location }),
+  <HTMLRenderer location={location}/>,
   document.getElementById('app')
 );

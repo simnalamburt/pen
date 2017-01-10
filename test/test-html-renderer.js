@@ -33,16 +33,15 @@ describe('HTMLRenderer', () => {
 
   it('renders HTML parsed from Markdown with using Virtual DOM', (done) => {
     let rendered;
-    let renderer = React.createElement(HTMLRenderer, {
-      location: {
+    let renderer = <HTMLRenderer
+      location={{
         host: 'localhost:1234',
         pathname: '/test.md'
-      },
-      onUpdate() {
+      }}
+      onUpdate={() => {
         assert.equal(getRenderedHTML(rendered), '<h1 id="hello"><!-- react-text: 3 -->hello<!-- /react-text --></h1><!-- react-text: 4 -->\n<!-- /react-text -->');
         done();
-      }
-    });
+      }} />;
     rendered = ReactTestUtils.renderIntoDocument(renderer);
   });
 
@@ -51,12 +50,12 @@ describe('HTMLRenderer', () => {
 
     let called = 0;
     let rendered;
-    let renderer = React.createElement(HTMLRenderer, {
-      location: {
+    let renderer = <HTMLRenderer
+      location={{
         host: 'localhost:1234',
         pathname: '/test.md'
-      },
-      onUpdate() {
+      }}
+      onUpdate={() => {
         let html = getRenderedHTML(rendered);
         switch (called) {
         case 0:
@@ -73,8 +72,7 @@ describe('HTMLRenderer', () => {
           break;
         }
         called += 1;
-      }
-    });
+      }} />;
     rendered = ReactTestUtils.renderIntoDocument(renderer);
   });
 });
